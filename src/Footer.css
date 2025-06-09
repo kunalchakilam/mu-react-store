@@ -1,0 +1,11 @@
+.App-Footer-Row {
+  background-color: darkgreen;
+  color: gold;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+  width: 100%;
+  position: relative;
+  margin: 0;
+  bottom: none;
+}

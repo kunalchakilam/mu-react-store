@@ -1,0 +1,33 @@
+.App-Header-Row {
+  display: flex;
+  justify-content: space-between;
+  background-color: gold;
+  align-items: center;
+  padding: 3px 10px;
+}
+
+.App-Header-Row div {
+  padding: 5px;
+}
+
+.App-Header-Row ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.App-Header-Row li {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.App-Header-Row li a {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+  transition: color 0.3s ease;
+}
+
+.App-Header-Row li a:hover {
+  color: darkblue;
+}
