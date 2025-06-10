@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
 export default function Home() {
-  const { cart, setCart } = useContext(AppContext);
+  const { cart, setCart, email } = useContext(AppContext);
   const products = [
     {
       id: 1,
@@ -41,6 +41,7 @@ export default function Home() {
         desc: obj.desc,
         imgUrl: obj.imgUrl,
         qty: 1,
+        email: email,
       },
     ]);
     Navigate("/cart");

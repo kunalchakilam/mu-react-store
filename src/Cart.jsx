@@ -3,7 +3,7 @@ import { AppContext } from "./App";
 import "./Cart.css";
 
 export default function Cart() {
-  const { cart, setCart } = useContext(AppContext);
+  const { cart, setCart, email } = useContext(AppContext);
 
   const incrementQty = (index) => {
     const updatedCart = [...cart];
@@ -50,8 +50,7 @@ export default function Cart() {
           ))}
           <h3>Order Total: ₹ {totalPrice}</h3>
           <div className="cart-actions">
-            <button className="order-btn">Place Order</button>
-            <button className="login-btn">Login to Order</button>
+            {email ? <button className="order-btn">Place Order</button> : <button className="login-btn">Login to Order</button> }
           </div>
         </div>
       )}

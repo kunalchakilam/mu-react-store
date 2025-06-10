@@ -5,7 +5,7 @@ import "./Login.css";
 
 export default function Login() {
   const [user, setUser] = useState({ email: "", pass: "" });
-  const { users } = useContext(AppContext);
+  const { users, setEmail } = useContext(AppContext);
   const [error, setError] = useState();
   const navigate = useNavigate();
 
@@ -17,6 +17,7 @@ export default function Login() {
     );
 
     if (matchedUser) {
+      setEmail(user.email)
       navigate("/");
     } else {
       setError("User not found. Please register now.");
