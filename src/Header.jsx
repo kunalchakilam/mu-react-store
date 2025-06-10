@@ -13,10 +13,10 @@ export default function Header({ name }) {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/login">Login</Link>
+            <Link to="/cart">Cart</Link>
           </li>
           <li>
-            <Link to="/cart">Cart</Link>
+            <Link to="/login">Login</Link>
           </li>
         </ul>
       </div>

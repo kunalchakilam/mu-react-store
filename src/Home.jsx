@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { AppContext } from "./App";
 import "./Home.css";
 
 export default function Home() {
+  const { cart, setCart } = useContext(AppContext);
+  const navigate = useNavigate();
+
   const products = [
     {
       id: 1,
@@ -26,6 +31,11 @@ export default function Home() {
     },
   ];
 
+  const handleAddToCart = (product) => {
+    setCart([...cart, product]);
+    navigate("/cart");
+  };
+
   return (
     <div className="home-content">
       <div className="App-Home-Row">
@@ -35,7 +45,7 @@ export default function Home() {
             <h2>{product.name}</h2>
             <p>{product.desc}</p>
             <h4>₹ {product.price}</h4>
-            <button>Add to Cart</button>
+            <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
           </div>
         ))}
       </div>
