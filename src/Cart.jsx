@@ -4,6 +4,7 @@ import "./Cart.css";
 import { Navigate } from "react-router-dom";
 
 export default function Cart() {
+  const Navigate = useNavigate();
   const { cart, setCart, email } = useContext(AppContext);
 
   const incrementQty = (index) => {
