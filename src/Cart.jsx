@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { AppContext } from "./App";
 import "./Cart.css";
+import { Navigate } from "react-router-dom";
 
 export default function Cart() {
   const { cart, setCart, email } = useContext(AppContext);
@@ -26,6 +27,10 @@ export default function Cart() {
     0
   );
 
+  const handleLogin = () =>{
+    Navigate("/login")
+  }
+
   return (
     <div className="cart-container">
       <h2>Your Cart</h2>
@@ -50,7 +55,7 @@ export default function Cart() {
           ))}
           <h3>Order Total: ₹ {totalPrice}</h3>
           <div className="cart-actions">
-            {email ? <button className="order-btn">Place Order</button> : <button className="login-btn">Login to Order</button> }
+            {email ? <button className="order-btn">Place Order</button> : <button className="login-btn" onClick={handleLogin}>Login to Order</button> }
           </div>
         </div>
       )}

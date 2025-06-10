@@ -7,6 +7,7 @@ import Footer from "./Footer";
 import Login from "./Login";
 import Register from "./Register";
 import Cart from "./Cart";
+import Logout from "./Logout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Home";
 export const AppContext = createContext();
@@ -24,6 +25,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
             <Route path="/register" element={<Register />} />
           </Routes>
           <Footer />

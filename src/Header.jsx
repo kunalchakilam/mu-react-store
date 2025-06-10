@@ -19,7 +19,11 @@ export default function Header({ name }) {
             <Link to="/cart">Cart</Link>
           </li>
           <li>
-            {email ? <Link to="/login">Log Out</Link> : <Link to="/login">Login</Link>}
+            {email ? (
+              <Link to="/logout">Logout</Link>
+            ) : (
+              <Link to="/login">Login</Link>
+            )}
           </li>
         </ul>
       </div>
