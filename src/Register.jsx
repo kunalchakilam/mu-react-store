@@ -9,11 +9,9 @@ export default function Register() {
   const nameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
-
   const navigate = useNavigate(); 
   const handleRegister = () => {
-    // setUsers([...users, user]);
-    setUsers([...users, userObj]);
+    setUsers([...users, user]);
     console.log(users)
     navigate("/login");
   };
@@ -27,8 +25,7 @@ export default function Register() {
           <input
             type="text"
             placeholder="Enter Name"
-            ref={nameRef}
-            // onChange={(e) => setUser({ ...user, name: e.target.value })}
+            onChange={(e) => setUser({ ...user, name: e.target.value })}
           />
         </p>
         <p>
@@ -36,8 +33,7 @@ export default function Register() {
           <input
             type="text"
             placeholder="Enter Email Id"
-            ref={emailRef}
-            // onChange={(e) => setUser({ ...user, email: e.target.value })}
+            onChange={(e) => setUser({ ...user, email: e.target.value })}
           />
         </p>
         <p>
@@ -45,8 +41,7 @@ export default function Register() {
           <input
             type="password"
             placeholder="New Password"
-            ref={passwordRef}
-            // onChange={(e) => setUser({ ...user, pass: e.target.value })}
+            onChange={(e) => setUser({ ...user, pass: e.target.value })}
           />
         </p>
         <button onClick={handleRegister}>Register</button>
