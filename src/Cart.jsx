@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { AppContext } from "./App";
 import "./Cart.css";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
   const Navigate = useNavigate();
