@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
 export default function Home() {
-  const {cart, setCart} = useContext(AppContext)
+  const { cart, setCart } = useContext(AppContext);
   const products = [
     {
       id: 1,
@@ -30,16 +30,22 @@ export default function Home() {
     },
   ];
   const Navigate = useNavigate();
+
   const addtoCart = (obj) => {
-    setCart({
-      id: obj.id,
-      name: obj.name,
-      price: obj.price,
-      desc: obj.desc,
-      qty: 1,
-    });
+    setCart((prevCart) => [
+      ...prevCart,
+      {
+        id: obj.id,
+        name: obj.name,
+        price: obj.price,
+        desc: obj.desc,
+        imgUrl: obj.imgUrl,
+        qty: 1,
+      },
+    ]);
     Navigate("/cart");
   };
+
   return (
     <div className="home-content">
       <div className="App-Home-Row">
