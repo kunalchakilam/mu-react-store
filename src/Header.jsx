@@ -1,6 +1,7 @@
 import React from "react";
 import "./Header.css";
 import { AppContext } from "./App";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 export default function Header({ name }) {
   const { email } = useContext(AppContext);
