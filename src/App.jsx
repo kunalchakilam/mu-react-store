@@ -16,15 +16,15 @@ function App() {
   const [cart, setCart] = useState([]);
   return (
     <div>
-      <AppContext.Provider value={{users, setUsers, cart, setCart}}>
+      <AppContext.Provider value={{users, setUsers}}>
         <BrowserRouter>
           <Header name="Mu-React-Store" />
           <Routes>
             <Route index element={<Home />} />
             <Route path="/" element={<Home />} />
+            <Route path="/cart" element={<Cart />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/cart" element={<Cart />} />
           </Routes>
           <Footer />
         </BrowserRouter>
