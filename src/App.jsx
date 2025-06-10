@@ -8,6 +8,7 @@ import Login from "./Login";
 import Register from "./Register";
 import Cart from "./Cart";
 import Logout from "./Logout";
+import Order from "./Order";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Home";
 export const AppContext = createContext();
@@ -15,9 +16,10 @@ function App() {
   const [users, setUsers] = useState([]);
   const [cart, setCart] = useState([]);
   const [email, setEmail] = useState();
+  const [orders, setOrders] = useState([]);
   return (
     <div>
-      <AppContext.Provider value={{users, setUsers, cart, setCart, email, setEmail}}>
+      <AppContext.Provider value={{users, setUsers, cart, setCart, email, setEmail, orders, setOrders}}>
         <BrowserRouter>
           <Header name="Mu-React-Store" />
           <Routes>
@@ -27,6 +29,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/order" element={<Order />} />
           </Routes>
           <Footer />
         </BrowserRouter>
