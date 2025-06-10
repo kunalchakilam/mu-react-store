@@ -3,9 +3,28 @@ import { AppContext } from "./App";
 import "./Cart.css"; 
 
 export default function Cart() {
-  const { cart } = useContext(AppContext);
+  const { cart, setCart } = useContext(AppContext);
 
-  const totalPrice = cart.reduce((total, item) => total + item.price * item.qty, 0);
+  const incrementQty = (index) => {
+    const updatedCart = [...cart];
+    updatedCart[index].qty += 1;
+    setCart(updatedCart);
+  };
+
+  const decrementQty = (index) => {
+    const updatedCart = [...cart];
+    if (updatedCart[index].qty > 1) {
+      updatedCart[index].qty -= 1;
+    } else {
+      updatedCart.splice(index, 1);
+    }
+    setCart(updatedCart);
+  };
+
+  const totalPrice = cart.reduce(
+    (total, item) => total + item.price * item.qty,
+    0
+  );
 
   return (
     <div className="cart-container">
@@ -21,7 +40,11 @@ export default function Cart() {
                 <h3>{item.name}</h3>
                 <p>{item.desc}</p>
                 <p>Price: ₹ {item.price}</p>
-                <p>Quantity: {item.qty}</p>
+                <div className="quantity-control">
+                  <button onClick={() => decrementQty(index)}>-</button>
+                  <span style={{ margin: "0 10px" }}>{item.qty}</span>
+                  <button onClick={() => incrementQty(index)}>+</button>
+                </div>
               </div>
             </div>
           ))}
