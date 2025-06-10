@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { AppContext } from "./App";
-import "./Cart.css"; 
+import "./Cart.css";
 
 export default function Cart() {
   const { cart, setCart } = useContext(AppContext);
@@ -48,7 +48,11 @@ export default function Cart() {
               </div>
             </div>
           ))}
-          <h3>Total: ₹ {totalPrice}</h3>
+          <h3>Order Total: ₹ {totalPrice}</h3>
+          <div className="cart-actions">
+            <button className="order-btn">Place Order</button>
+            <button className="login-btn">Login to Order</button>
+          </div>
         </div>
       )}
     </div>
