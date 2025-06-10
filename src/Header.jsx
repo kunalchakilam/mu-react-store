@@ -1,7 +1,9 @@
 import React from "react";
 import "./Header.css";
+import { AppContext } from "./App";
 import { Link } from "react-router-dom";
 export default function Header({ name }) {
+  const { email } = useContext(AppContext);
   return (
     <div className="App-Header-Row" style={{ backgroundColor: "gold" }}>
       <div>
@@ -16,7 +18,7 @@ export default function Header({ name }) {
             <Link to="/cart">Cart</Link>
           </li>
           <li>
-            <Link to="/login">Login</Link>
+            {email ? <Link to="/login">Log Out</Link> : <Link to="/login">Login</Link>}
           </li>
         </ul>
       </div>
