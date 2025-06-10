@@ -12,7 +12,7 @@ export default defineConfig({
       manifest: {
         name: "Mu-React-Store",
         short_name: "mrc",
-        description: "Full Stack Development Learning",
+        description: "This is an online store developed a Full Stack Application as part of our learning FSD",
         theme_color: "#ffffff",
         icons: [
           {
