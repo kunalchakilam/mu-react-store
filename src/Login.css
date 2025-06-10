@@ -20,7 +20,7 @@ body {
   width: 320px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px; /* reduced from 15px to 10px */
 }
 
 .login-box h2 {
@@ -32,7 +32,7 @@ body {
 
 .login-box label {
   font-size: 16px;
-  margin-bottom: 5px;
+  margin-bottom: 0px; /* removed spacing below label */
   font-weight: 500;
 }
 
@@ -41,9 +41,10 @@ body {
   font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  margin-bottom: 8px; /* Optional: add small space between input and next label */
 }
 
-.login-btn{
+.login-btn {
   padding: 10px;
   font-size: 15px;
   background-color: gold;
@@ -72,4 +73,15 @@ body {
 
 .register-link a:hover {
   text-decoration: underline;
+}
+
+.login-box p {
+  font-size: 16px;
+  margin-bottom: 0px; 
+  font-weight: 500;
+}
+
+.login-box input {
+  margin-top: 0px;   
+  margin-bottom: 8px; 
 }

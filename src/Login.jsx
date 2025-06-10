@@ -1,27 +1,57 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AppContext } from "./App";
 import "./Login.css";
 
 export default function Login() {
+  const [user, setUser] = useState({ email: "", pass: "" });
+  const { users } = useContext(AppContext);
+  const [error, setError] = useState();
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    const matchedUser = users.find(
+      (u) => u.email === user.email && u.pass === user.pass
+    );
+
+    if (matchedUser) {
+      navigate("/");
+    } else {
+      setError("User not found. Please register now.");
+    }
+  };
+
   return (
     <div className="login-container">
-      <div className="login-box">
+      <form className="login-box">
         <h2>Login</h2>
 
+        {error && <p style={{ color: "red", textAlign: "center" }}>{error}</p>}
+
         <label>Email Id:</label>
-        <input type="text" placeholder="Enter Email Id" />
+        <input
+          type="text"
+          placeholder="Enter Email Id"
+          onChange={(e) => setUser({ ...user, email: e.target.value })}
+        />
 
         <label>Password:</label>
-        <input type="password" placeholder="Enter Password" />
+        <input
+          type="password"
+          placeholder="Enter Password"
+          onChange={(e) => setUser({ ...user, pass: e.target.value })}
+        />
 
-        <button className="login-btn">Log In</button>
+        <button type="submit" className="login-btn" onClick={handleLogin}>
+          Log In
+        </button>
 
         <div className="register-link">
-          <Link to="/register">
-            Don't have an account? Create now...
-          </Link>
+          <Link to="/register">Don't have an account? Create now...</Link>
         </div>
-      </div>
+      </form>
     </div>
   );
 }

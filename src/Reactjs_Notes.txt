@@ -1,0 +1,39 @@
+import {useState} from ...
+
+const [name,setName] = useState("Kunal")
+const [age,setAge] = useState()
+
+//Instead of using many const variables we can define one object and store all properties in it like below
+
+const user = {
+name: "fdfsdf",
+age: 34
+}
+
+<input
+  type="text"
+  onChange={(e)=>setUser({...user,name:e.target.value})
+/>
+
+setName("Kun")
+
+function submit(e) {
+    setName(e)
+}
+
+<input 
+  type="text"
+  onChange={(e)=>submit(e.target.value)}
+/>
+
+<input 
+  type="text"
+  onChange={(e)=>setName(e.target.value)}
+/>
+
+<input 
+  type="number"
+  onChange={(e)=>setAge(e.target.value)}
+/>
+
+{name} {age} //To disply
