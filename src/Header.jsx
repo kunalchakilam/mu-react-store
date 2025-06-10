@@ -19,6 +19,9 @@ export default function Header({ name }) {
             <Link to="/cart">Cart</Link>
           </li>
           <li>
+            <Link to="/order">My Orders</Link>
+          </li>
+          <li>
             {email ? (
               <Link to="/logout">Logout</Link>
             ) : (
