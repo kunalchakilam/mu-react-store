@@ -1,5 +1,5 @@
 import React from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
 export default function Home() {
@@ -27,9 +27,16 @@ export default function Home() {
     },
   ];
   const Navigate = useNavigate();
-  const addtoCart = () => {
-    Navigate("/cart")
-  }
+  const addtoCart = (obj) => {
+    setCart({
+      id: obj.id,
+      name: obj.name,
+      price: obj.price,
+      desc: obj.desc,
+      qty: 1,
+    });
+    Navigate("/cart");
+  };
   return (
     <div className="home-content">
       <div className="App-Home-Row">
@@ -39,7 +46,7 @@ export default function Home() {
             <h2>{product.name}</h2>
             <p>{product.desc}</p>
             <h4>₹ {product.price}</h4>
-            <button onClick={addtoCart}>Add to Cart</button>
+            <button onClick={() => addtoCart(product)}>Add to Cart</button>
           </div>
         ))}
       </div>
