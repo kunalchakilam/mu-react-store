@@ -1,8 +1,11 @@
 import React from "react";
+import { AppContext } from "./App";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
 export default function Home() {
+  const {cart, setCart} = useContext(AppContext)
   const products = [
     {
       id: 1,
