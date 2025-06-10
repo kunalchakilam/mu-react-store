@@ -1,14 +1,19 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState, useContext, useRef } from "react";
 import { AppContext } from "./App";
 import "./Register.css";
 
 export default function Register() {
   const [user, setUser] = useState({});
   const{users, setUsers} = useContext(AppContext);
+  const nameRef = useRef();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
   const navigate = useNavigate(); 
   const handleRegister = () => {
-    setUsers([...users, user]);
+    // setUsers([...users, user]);
+    setUsers([...users, userObj]);
     console.log(users)
     navigate("/login");
   };
@@ -22,7 +27,8 @@ export default function Register() {
           <input
             type="text"
             placeholder="Enter Name"
-            onChange={(e) => setUser({ ...user, name: e.target.value })}
+            ref={nameRef}
+            // onChange={(e) => setUser({ ...user, name: e.target.value })}
           />
         </p>
         <p>
@@ -30,7 +36,8 @@ export default function Register() {
           <input
             type="text"
             placeholder="Enter Email Id"
-            onChange={(e) => setUser({ ...user, email: e.target.value })}
+            ref={emailRef}
+            // onChange={(e) => setUser({ ...user, email: e.target.value })}
           />
         </p>
         <p>
@@ -38,7 +45,8 @@ export default function Register() {
           <input
             type="password"
             placeholder="New Password"
-            onChange={(e) => setUser({ ...user, pass: e.target.value })}
+            ref={passwordRef}
+            // onChange={(e) => setUser({ ...user, pass: e.target.value })}
           />
         </p>
         <button onClick={handleRegister}>Register</button>
