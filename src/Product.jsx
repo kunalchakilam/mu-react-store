@@ -1,14 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useEffect } from 'react'
 
 export default function Product() {
+    const [ count, setCount ] = useState(0);
     const fetchProducts = () => {
         alert("Hello World");
     };
     useEffect(()=>{
-        fetchProducts()
-    },[])
+        fetchProducts();
+        return () =>{
+            alert("Unmounted");
+        };
+    },[count])
   return (
-    <div>Product</div>
+    <div>
+        <p>{count}</p>
+        <button onClick={()=>setCount(count+1)}>Update Count</button>
+    </div>
   )
 }
