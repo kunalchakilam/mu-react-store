@@ -11,7 +11,7 @@ export default function Product() {
     };
     useEffect(()=>{
         fetchProducts();   
-    },[count])
+    },[])
   return (
     <div>
         {products.map(product=>(
