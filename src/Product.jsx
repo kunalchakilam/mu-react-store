@@ -6,7 +6,7 @@ export default function Product() {
         alert("Hello World");
     };
     useEffect(()=>{
-        fetchProducts
+        fetchProducts()
     },[])
   return (
     <div>Product</div>
