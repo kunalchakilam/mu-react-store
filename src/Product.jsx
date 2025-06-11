@@ -4,6 +4,8 @@ import axios from 'axios';
 
 export default function Product() {
     const [products, setProducts] = useState([]);
+
+    
     const fetchProducts = async () => {
         const url = "https://gcet-node-app.vercel.app/products/all"
         const res = await axios.get(url);
