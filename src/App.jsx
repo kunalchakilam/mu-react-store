@@ -6,6 +6,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Login from "./Login";
 import Register from "./Register";
+import Product from "./Product";
 import Cart from "./Cart";
 import Logout from "./Logout";
 import Order from "./Order";
@@ -24,7 +25,7 @@ function App() {
           <Header name="Mu-React-Store" />
           <Routes>
             <Route index element={<Home />} />
-            <Route path="/" element={<Home />} />
+            <Route path="/product" element={<Product />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
