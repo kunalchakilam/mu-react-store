@@ -7,7 +7,7 @@ export default function Product() {
 
     
     const fetchProducts = async () => {
-        const url = "https://gcet-node-app.vercel.app/products/all"
+        const url = "http://localhost:8080/products"
         const res = await axios.get(url);
         setProducts(res.data);
     };
