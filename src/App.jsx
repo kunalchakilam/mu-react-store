@@ -25,7 +25,7 @@ function App() {
         <BrowserRouter>
           <Header name="Mu-React-Store" />
           <Routes>
-            <Route index element={<Home />} />
+            <Route index element={<Product />} />
             <Route path="/" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/login" element={<Login />} />
