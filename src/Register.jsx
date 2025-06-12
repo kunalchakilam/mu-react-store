@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useContext, useRef } from "react";
 import { AppContext } from "./App";
 import "./Register.css";
+import axios from "axios";
 
 export default function Register() {
   const [user, setUser] = useState({});
@@ -10,11 +11,14 @@ export default function Register() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate(); 
-  const handleRegister = () => {
-    setUsers([...users, user]);
-    console.log(users)
-    navigate("/login");
-  };
+
+const handleRegister = async () => {
+  setUsers([...users, user]);
+  const url = "http://localhost:8080/users";
+  const res = await axios.post(url, user);
+  setUsers(res.data);
+  navigate("/login");
+};
 
   return (
     <div className="register-container">

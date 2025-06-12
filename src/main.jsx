@@ -1,11 +1,10 @@
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-import Header from './Header.jsx';
-import Footer from './Footer.jsx';
-createRoot(document.getElementById('root')).render(<App />);
-
+import { createRoot } from 'react-dom/client';
+import './index.css';
+import App from './App.jsx';
 import { registerSW } from 'virtual:pwa-register';
+
+const root = createRoot(document.getElementById('root'));
+root.render(<App />);
 
 const updateSW = registerSW({
   onNeedRefresh() {
@@ -17,5 +16,3 @@ const updateSW = registerSW({
     console.log("App is ready to work offline.");
   }
 });
-
-createRoot(document.getElementById("root")).render(<App />);

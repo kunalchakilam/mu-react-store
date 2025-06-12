@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "./App";
 import "./Login.css";
+import axios from "axios";
 
 export default function Login() {
   const [user, setUser] = useState({ email: "", pass: "" });
@@ -9,20 +10,23 @@ export default function Login() {
   const [error, setError] = useState();
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
-    e.preventDefault();
+const handleLogin = async (e) => {
+  e.preventDefault();
 
-    const matchedUser = users.find(
-      (u) => u.email === user.email && u.pass === user.pass
-    );
+  const res = await axios.get("http://localhost:8080/users");
+  const usersFromBackend = res.data;
 
-    if (matchedUser) {
-      setEmail(user.email)
-      navigate("/");
-    } else {
-      setError("User not found. Please register now.");
-    }
-  };
+  const matchedUser = usersFromBackend.find(
+    (u) => u.email === user.email && u.pass === user.pass
+  );
+
+  if (matchedUser) {
+    setEmail(user.email);
+    navigate("/");
+  } else {
+    setError("User not found. Please register now.");
+  }
+};
 
   return (
     <div className="login-container">
