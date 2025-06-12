@@ -32,6 +32,7 @@ function App() {
             <Route path="/logout" element={<Logout />} />
             <Route path="/register" element={<Register />} />
             <Route path="/order" element={<Order />} />
+            <Route path="/product" element={<Product />} />
           </Routes>
           <Footer />
         </BrowserRouter>
