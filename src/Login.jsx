@@ -6,31 +6,34 @@ import axios from "axios";
 
 export default function Login() {
   const [user, setUser] = useState({ email: "", pass: "" });
-  const { users, setEmail } = useContext(AppContext);
-  const [error, setError] = useState();
+  const { setEmail } = useContext(AppContext);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-const handleLogin = async (e) => {
-  e.preventDefault();
+  const handleLogin = async (e) => {
+    e.preventDefault();
 
-  const res = await axios.get("http://localhost:8080/users");
-  const usersFromBackend = res.data;
+    try {
+      const res = await axios.post("http://localhost:8080/login", {
+        email: user.email.trim(),
+        pass: user.pass.trim(),
+      });
 
-  const matchedUser = usersFromBackend.find(
-    (u) => u.email === user.email && u.pass === user.pass
-  );
-
-  if (matchedUser) {
-    setEmail(user.email);
-    navigate("/");
-  } else {
-    setError("User not found. Please register now.");
-  }
-};
+      if (res.data) {
+        setEmail(user.email);
+        navigate("/");
+      } else {
+        setError("User not found. Please register.");
+      }
+    } catch (err) {
+      console.error("Login error:", err);
+      setError("Something went wrong. Please try again.");
+    }
+  };
 
   return (
     <div className="login-container">
-      <form className="login-box">
+      <form className="login-box" onSubmit={handleLogin}>
         <h2>Login</h2>
 
         {error && <p style={{ color: "red", textAlign: "center" }}>{error}</p>}
@@ -40,6 +43,7 @@ const handleLogin = async (e) => {
           type="text"
           placeholder="Enter Email Id"
           onChange={(e) => setUser({ ...user, email: e.target.value })}
+          value={user.email}
         />
 
         <label>Password:</label>
@@ -47,9 +51,10 @@ const handleLogin = async (e) => {
           type="password"
           placeholder="Enter Password"
           onChange={(e) => setUser({ ...user, pass: e.target.value })}
+          value={user.pass}
         />
 
-        <button type="submit" className="login-btn" onClick={handleLogin}>
+        <button type="submit" className="login-btn">
           Log In
         </button>
 

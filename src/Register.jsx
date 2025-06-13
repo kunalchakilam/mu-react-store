@@ -13,12 +13,16 @@ export default function Register() {
   const navigate = useNavigate(); 
 
 const handleRegister = async () => {
-  setUsers([...users, user]);
-  const url = "http://localhost:8080/users";
-  const res = await axios.post(url, user);
-  setUsers(res.data);
-  navigate("/login");
+  const url = "http://localhost:8080/register";
+  try {
+    const res = await axios.post(url, user);
+    setUsers([...users, res.data]); 
+    navigate("/login");
+  } catch (error) {
+    console.error("Registration failed:", error);
+  }
 };
+
 
   return (
     <div className="register-container">
