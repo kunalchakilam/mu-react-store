@@ -26,7 +26,7 @@ function App() {
           <Header name="Mu-React-Store" />
           <main className="App-Wrapper">
             <Routes>
-              <Route index element={<Product />} />
+              <Route index element={<Home />} />
               <Route path="/" element={<Home />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/login" element={<Login />} />
